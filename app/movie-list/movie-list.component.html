@@ -1,0 +1,22 @@
+
+    <table>
+   <tr>
+    <td><button class='link' routerLink="/list">Wszystkie</button></td>
+    
+    <td *ngFor="let category of categoriesArray">
+        <button class='link' routerLink="/list/{{category}}">{{category}}</button>
+    </td>
+    </tr>
+</table>
+<table>
+    <tr>
+            <th>Tytuł</th><th>Ilość</th><th>Cena</th><th>Gatunek</th><th></th>
+        </tr>
+   <tr *ngFor="let movieFor of movies">
+       <td>{{movieFor.name}}</td>
+       <td>{{movieFor.count}}</td>
+       <td>{{movieFor.fee}}</td>
+       <td>{{movieFor.categoryIds}}</td>    
+       <td><button>Dodaj do koszyka</button></td>
+    </tr>
+</table>

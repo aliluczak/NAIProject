@@ -1,0 +1,25 @@
+body{
+    position: relative;
+}
+
+.link {
+    background-color: orange;
+    color: gray;
+    position: relative;
+    display: inline-block;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+.router-link-active {
+    background-color: black;
+    color: white;
+}
+[routerLinkActive="true"] {
+    background-color: black;
+    color: white;
+}
+
+td, th {
+    margin-left: 15px;
+}
