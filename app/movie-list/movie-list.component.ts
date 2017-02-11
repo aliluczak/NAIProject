@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core'; 
 import { Movie } from './movie.model';
 import { MovieService } from './movieList.service';
+import { CartService } from '../cart/cart.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'my-movie-list',
     templateUrl: 'app/movie-list/movie-list.component.html',
     styleUrls: [ 'app/movie-list/movie-list.component.css' ],
-    providers: [ MovieService ]
+    providers: [ MovieService, CartService ]
 })
 export class MovieListComponent implements OnInit {
 
@@ -16,16 +17,25 @@ export class MovieListComponent implements OnInit {
     public static categories:Array<string> = [];
 
     constructor(private movieService: MovieService,
-        private activatedRoute: ActivatedRoute) {
+        private activatedRoute: ActivatedRoute
+    //){
+        , private cartService: CartService) {
     }
 
     get categoriesArray(){
         return MovieListComponent.categories;
     }
 
+    addMovieToCart(movie : Movie) {  
+       this.cartService.addMovie(movie);
+    }
+    
+
     ngOnInit () {
         this.activatedRoute.params.subscribe((param) => {
-            this.movieService.getMovies(param.category).subscribe( //
+         //   this.movieService.getMovies(param.category).subscribe( //
+          //    this.movieService.getMovies(undefined).subscribe( 
+              this.movieService.getMovies(param['category']).subscribe(
                 data => {
                     this.movies = data;
                      if(MovieListComponent.categories.length === 0){

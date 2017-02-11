@@ -15,9 +15,11 @@ var forms_1 = require('@angular/forms');
 var movie_list_component_1 = require('./movie-list.component');
 var movie_component_1 = require('./movie.component');
 var movieList_service_1 = require('./movieList.service');
+var cart_component_1 = require('../cart/cart.component');
 var router_1 = require('@angular/router');
 var routes = [
     { path: ':category', component: movie_list_component_1.MovieListComponent },
+    { path: 'order', component: movie_list_component_1.MovieListComponent },
     { path: '', component: movie_list_component_1.MovieListComponent }
 ];
 var MovieModule = (function () {
@@ -31,8 +33,8 @@ var MovieModule = (function () {
                 forms_1.FormsModule,
                 router_1.RouterModule.forChild(routes)
             ],
-            declarations: [movie_list_component_1.MovieListComponent, movie_component_1.MovieComponent],
-            exports: [movie_list_component_1.MovieListComponent],
+            declarations: [movie_list_component_1.MovieListComponent, movie_component_1.MovieComponent, cart_component_1.CartComponent],
+            exports: [movie_list_component_1.MovieListComponent, cart_component_1.CartComponent],
             providers: [movieList_service_1.MovieService]
         }), 
         __metadata('design:paramtypes', [])

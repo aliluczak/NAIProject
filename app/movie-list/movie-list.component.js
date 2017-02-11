@@ -10,11 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var movieList_service_1 = require('./movieList.service');
+var cart_service_1 = require('../cart/cart.service');
 var router_1 = require('@angular/router');
 var MovieListComponent = (function () {
-    function MovieListComponent(movieService, activatedRoute) {
+    function MovieListComponent(movieService, activatedRoute, cartService) {
         this.movieService = movieService;
         this.activatedRoute = activatedRoute;
+        this.cartService = cartService;
         this.movies = [];
     }
     Object.defineProperty(MovieListComponent.prototype, "categoriesArray", {
@@ -24,12 +26,15 @@ var MovieListComponent = (function () {
         enumerable: true,
         configurable: true
     });
+    MovieListComponent.prototype.addMovieToCart = function (movie) {
+        this.cartService.addMovie(movie);
+    };
     MovieListComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.activatedRoute.params.subscribe(function (param) {
-            _this.movieService.getMovies(param.category).subscribe(//
-            function (//
-                data) {
+            //   this.movieService.getMovies(param.category).subscribe( //
+            //    this.movieService.getMovies(undefined).subscribe( 
+            _this.movieService.getMovies(param['category']).subscribe(function (data) {
                 _this.movies = data;
                 if (MovieListComponent.categories.length === 0) {
                     _this.movies.forEach(function (movie) {
@@ -55,9 +60,9 @@ var MovieListComponent = (function () {
             selector: 'my-movie-list',
             templateUrl: 'app/movie-list/movie-list.component.html',
             styleUrls: ['app/movie-list/movie-list.component.css'],
-            providers: [movieList_service_1.MovieService]
+            providers: [movieList_service_1.MovieService, cart_service_1.CartService]
         }), 
-        __metadata('design:paramtypes', [movieList_service_1.MovieService, router_1.ActivatedRoute])
+        __metadata('design:paramtypes', [movieList_service_1.MovieService, router_1.ActivatedRoute, cart_service_1.CartService])
     ], MovieListComponent);
     return MovieListComponent;
 }());

@@ -8,15 +8,17 @@
     </td>
     </tr>
 </table>
-<table>
+<table class=lista>
     <tr>
-            <th>Tytuł</th><th>Ilość</th><th>Cena</th><th>Gatunek</th><th></th>
+            <th class=header>Tytuł</th><th>Ilość</th><th>Cena</th><th>Gatunek</th><th></th>
         </tr>
    <tr *ngFor="let movieFor of movies">
        <td>{{movieFor.name}}</td>
-       <td>{{movieFor.count}}</td>
+       <td>{{movieFor.copiesLeft}}</td>
        <td>{{movieFor.fee}}</td>
        <td>{{movieFor.categoryIds}}</td>    
-       <td><button>Dodaj do koszyka</button></td>
+       <td><button (click)=addMovieToCart(movieFor)>Dodaj do koszyka</button></td>
     </tr>
 </table>
+
+<my-movie-cart></my-movie-cart>

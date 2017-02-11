@@ -1,14 +1,17 @@
+
+
 body{
     position: relative;
 }
 
 .link {
-    background-color: orange;
-    color: gray;
+    background-color: tan;
+    color: floralwhite;
     position: relative;
     display: inline-block;
     margin-left: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .router-link-active {
@@ -22,4 +25,19 @@ body{
 
 td, th {
     margin-left: 15px;
+}
+
+
+th{
+    background-color: floralwhite;
+    color: darkslategrey;
+}
+
+.lista{
+    background-color: beige;
+}
+
+button{
+    background: tan;
+    color: floralwhite;
 }

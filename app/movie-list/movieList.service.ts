@@ -13,6 +13,7 @@ export class MovieService {
     getMovies (categoryId : string) : Observable<Movie[]> {
        // return this.http.get('app/movie-list/movies.json') //'http://localhost:8081/api/movies')
          return this.http.get('http://localhost:8081/api/movies')
+     // return this.http.get('app/movie-list/movies.json')
             .map((res) => this.extractData(res, categoryId));
     }
 
