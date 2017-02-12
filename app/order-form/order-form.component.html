@@ -1,0 +1,29 @@
+<div class='order-form'>
+    <form>
+    <div class="input-form">
+        <label>First name: </label>
+        <input type="text" name="firstName" required>
+    </div>
+
+    <div class="input-form">
+        <label>Last name:</label>
+        <input type="text" name='lastName' required>
+    </div>
+    <div class="input-form">
+        <label>Telephone number:</label>
+        <input type="text" name="number" required [patern]="regexPattern">
+    </div>
+
+    <div class='cart'>
+        <table>
+            <tr *ngFor="let movie of cart">
+                <td>{{movie.name}}</td>
+                <td>{{movie.fee}}</td>  
+            </tr>
+        </table>
+    </div>
+
+    <button (click)="submit(firstName.value, lastName.value, number.value)">Confirm</button>
+    <button routerLink="/list">Powrót</button>
+    </form>
+</div>

@@ -50,5 +50,9 @@ export class CartService {
          this._movies.next(this.cart);
         }
     }
+
+    getCart(): Array<Movie>{
+        return this.cart;
+    }
     
 }

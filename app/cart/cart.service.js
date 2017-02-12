@@ -46,6 +46,9 @@ var CartService = (function () {
             this._movies.next(this.cart);
         }
     };
+    CartService.prototype.getCart = function () {
+        return this.cart;
+    };
     CartService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
