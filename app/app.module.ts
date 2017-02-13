@@ -14,7 +14,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CartService } from './cart/cart.service';
 
 import {OrderFormService} from './order-form/order-form.service';
-import {AboutService} from './about/abouts.service';
+import {AboutService} from './about/about.service';
 
 
 const routes: Routes = [
