@@ -18,7 +18,8 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
     {path: ':category', component: MovieListComponent},
     {path: 'order', component: OrderFormComponent}, //zmienić na komponent zamówienia
-     { path: '', component: MovieListComponent }
+     { path: '', component: MovieListComponent },
+     { path: 'about', component: AboutComponent }
 ];
 
 @NgModule({
@@ -30,7 +31,7 @@ const routes: Routes = [
     ],
     declarations: [ MovieListComponent, MovieComponent, CartComponent, OrderFormComponent, AboutComponent ],
     exports: [ MovieListComponent, CartComponent, OrderFormComponent, AboutComponent ],
-    providers: [ MovieService, OrderFormServicem AboutService ]
+    providers: [ MovieService, OrderFormService, AboutService ]
 })
 export class MovieModule {
 

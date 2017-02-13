@@ -13,6 +13,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { CartService } from './cart/cart.service';
 
+import {OrderFormService} from './order-form/order-form.service';
+import {AboutService} from './about/abouts.service';
+
 
 const routes: Routes = [
     { path: 'list', loadChildren: 'app/movie-list/movie.module#MovieModule' },

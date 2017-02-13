@@ -21,7 +21,7 @@ var OrderFormComponent = (function () {
     }
     OrderFormComponent.prototype.submit = function (firstName, lastName, number) {
         this.user = new order_form_user_1.User(firstName, lastName, number, this.movieIds);
-        this.orderFormService.submit(this.user);
+        this.orderFormService.submitData(this.user);
     };
     OrderFormComponent.prototype.getCart = function () {
         var _this = this;

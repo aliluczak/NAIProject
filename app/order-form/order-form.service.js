@@ -19,7 +19,7 @@ var OrderFormService = (function () {
     OrderFormService.prototype.submitData = function (user) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var body = JSON.stringify(user);
-        return this.http.post('/borrow', body, headers)
+        return this.http.post('http://localhost:8081/borrow', body, headers)
             .map(function (res) { return res.json(); })
             .catch(this.handleError);
     };

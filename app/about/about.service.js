@@ -8,6 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
+require('rxjs/add/operator/map');
 var AboutService = (function () {
     function AboutService(http) {
         this.http = http;
@@ -15,12 +18,16 @@ var AboutService = (function () {
     AboutService.prototype.getAbout = function () {
         var _this = this;
         // return this.http.get('app/movie-list/movies.json') //'http://localhost:8081/api/movies')
-        return this.http.get('http://localhost:8081/api/movies')
-            .map(function (res) { return _this.extractData(res); });
+        return this.http.get('http://localhost:8081/about')
+            .map(function (res) { return _this.extract(res); });
+    };
+    AboutService.prototype.extract = function (res) {
+        var body = res.json();
+        return body || {};
     };
     AboutService = __decorate([
-        Injectable(), 
-        __metadata('design:paramtypes', [Object])
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [http_1.Http])
     ], AboutService);
     return AboutService;
 }());

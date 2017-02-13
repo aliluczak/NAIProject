@@ -8,25 +8,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var about_service_1 = require('about.service');
+var about_service_1 = require('./about.service');
+var core_1 = require('@angular/core');
 var AboutComponent = (function () {
     function AboutComponent(aboutService) {
         this.aboutService = aboutService;
     }
     AboutComponent.prototype.ngOnInit = function () {
-        this.about = this.aboutService.getAbout();
+        var _this = this;
+        this.aboutService.getAbout().subscribe(function (data) { _this.about = data; });
     };
     AboutComponent = __decorate([
-        Component({
+        core_1.Component({
             selector: 'about',
             templateUrl: 'app/about/about.component.html',
             styleUrls: ['app/about/about.component.css'],
             providers: [about_service_1.AboutService]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof about_service_1.AboutService !== 'undefined' && about_service_1.AboutService) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [about_service_1.AboutService])
     ], AboutComponent);
     return AboutComponent;
-    var _a;
 }());
 exports.AboutComponent = AboutComponent;
 //# sourceMappingURL=about.component.js.map

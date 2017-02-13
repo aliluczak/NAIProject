@@ -1,5 +1,6 @@
-import{AboutService} from 'about.service';
+import{AboutService} from './about.service';
 import {About} from './about.model';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'about',
@@ -13,6 +14,7 @@ export class AboutComponent implements OnInit{
     public about: About;
 
     ngOnInit (){
-        this.about = this.aboutService.getAbout();
-    } 
+              this.aboutService.getAbout().subscribe(
+              data => {this.about = data;});
+    }
 }

@@ -22,7 +22,7 @@ export class OrderFormComponent implements OnInit{
     
     submit(firstName: string, lastName: string, number: string){
         this.user = new User(firstName, lastName, number, this.movieIds);
-        this.orderFormService.submit(this.user);
+        this.orderFormService.submitData(this.user);
     }
 
     getCart(){
