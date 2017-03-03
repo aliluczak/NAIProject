@@ -15,15 +15,11 @@ var AboutService = (function () {
     function AboutService(http) {
         this.http = http;
     }
-    AboutService.prototype.getAbout = function () {
-        var _this = this;
-        // return this.http.get('app/movie-list/movies.json') //'http://localhost:8081/api/movies')
-        return this.http.get('http://localhost:8081/about')
-            .map(function (res) { return _this.extract(res); });
-    };
-    AboutService.prototype.extract = function (res) {
-        var body = res.json();
-        return body || {};
+    AboutService.prototype.getAboutData = function () {
+        var tempAbout = this.http.get('http://localhost:8081/api/about')
+            .map(function (res) { return res.json(); });
+        console.log(tempAbout);
+        return tempAbout;
     };
     AboutService = __decorate([
         core_1.Injectable(), 

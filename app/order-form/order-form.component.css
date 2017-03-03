@@ -2,3 +2,7 @@
         color: slategray;
 }
 
+.cart label{
+        font-weight: bold;
+        font-size: 18;
+}

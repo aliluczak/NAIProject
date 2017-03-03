@@ -16,7 +16,7 @@ var AboutComponent = (function () {
     }
     AboutComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.aboutService.getAbout().subscribe(function (data) { _this.about = data; });
+        this.aboutService.getAboutData().subscribe(function (result) { return _this.about = result; });
     };
     AboutComponent = __decorate([
         core_1.Component({

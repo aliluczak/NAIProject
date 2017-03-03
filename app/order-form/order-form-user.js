@@ -4,6 +4,7 @@ var User = (function () {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = number;
+        this.movieIds = cart;
     }
     return User;
 }());

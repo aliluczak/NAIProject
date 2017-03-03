@@ -10,9 +10,9 @@ export class OrderFormService{
     }
 
 
-    submitData(form: User, movieIds: Array<number>){
+    submitData(form: User){
         let headers = new Headers({ 'Content-Type': 'application/json' });
-        let body = JSON.stringify({form});
+        let body = JSON.stringify(form);
         console.log(body);
          this.http.post('http://localhost:8081/api/borrow', body, headers)
             .map(res => res.json())

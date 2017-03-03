@@ -26,22 +26,21 @@ router.get('/movies/:category', (req, res) => {
 });
 
 router.post('/borrow', (req, res) => {
-    if (!/\w+/.test(_.get(req, 'body.form.firstName', ''))) {
-        console.log(_.get(req, 'body.form.firstName', ''));
+    if (!/\w+/.test(_.get(req, 'body.firstName'))) {
         res.status(500).send('Niepoprawne imię.');
         return;
     }
-    if (!/\w+/.test(_.get(req, 'body.form.lastName', ''))) {
-        console.log("nazwisko");
+    if (!/\w+/.test(_.get(req, 'body.lastName'))) {
         res.status(500).send('Niepoprawne nazwisko.');
         return;
     }
-    if (!/\d{9,10}/.test(_.get(req, 'body.form.phone'))) {
-        console.log("phone");
+    console.log(_.isNumber(_.get(req.body, 'phone')));
+    if (!/\d{9,10}/.test(_.get(req, 'body.phone'))) {
+        console.log();
         res.status(500).send('Niepoprawny numer telefonu.');
         return;
     }
-    if (storage.borrow(req.body.movieIds)){
+    if (storage.borrow(_.get(req, 'body.movieIds'))){
         res.status(200).send();
     } else {
         console.log("filmy");

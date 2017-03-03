@@ -1,28 +1,47 @@
 <div class='order-form'>
     <form>
-    <div class="input-form">
-        <label>First name: </label>
-        <input [(ngModel)]="firstName" name="firstName" type="text" required>
-    </div>
+    <table>
+    <tr>
+        <td>
+            <label>Imię: </label>
+        </td>
+        <td>
+            <input [(ngModel)]="firstName" name="firstName" type="text" required>
+        </td>
+    </tr>
 
-    <div class="input-form">
-        <label>Last name:</label>
-        <input [(ngModel)]="lastName" name="lastName" type="text" required>
-    </div>
-    <div class="input-form">
-        <label>Telephone number:</label>
-        <input [(ngModel)]="number" name="number" type="text" required pattern="[0-9]{9,10}">
-    </div>
-
+    <tr>
+        <td>
+            <label>Nazwisko:</label>
+        </td>
+        <td>
+            <input [(ngModel)]="lastName" name="lastName" type="text" required>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>Telefon:</label>
+        </td>
+        <td>
+            <input [(ngModel)]="number" name="number" type="text" required pattern="[0-9]{9,10}">
+        </td>
+    </tr>
+    </table>
+<br>
     <div class='cart'>
+        <label>Przedmioty w koszyku</label>
         <table>
+            <tr>
+                <td><b>Nazwa</b></td>
+                <td><b>Cena</b></td>
+            </tr>
             <tr *ngFor="let movie of cart">
                 <td>{{movie.name}}</td>
                 <td>{{movie.fee}}</td>  
             </tr>
         </table>
     </div>
-    <button (click)="submit()">Confirm</button>
+    <button (click)="submit()">Wypożycz</button>
     <button (click)="back()">Powrót</button>
     </form>
 </div>

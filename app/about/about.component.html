@@ -1,3 +1,63 @@
 <h1>O nas</h1>
-<label [(ngModel)]="about.name">
-<label [(ngModel)]="about.hours">
+<div class="headerName">
+<label *ngIf="about">{{about.name}}</label>
+</div>
+<br>
+<table>
+<tr>
+    <td>
+         <label *ngIf="about"> Poniedziałek</label>
+    </td>
+    <td>
+        <label *ngIf="about">{{about.hours.monday}}</label>
+    </td>
+</tr>
+<tr>
+    <td>
+         <label *ngIf="about"> Wtorek</label>
+    </td>
+    <td>
+        <label *ngIf="about">{{about.hours.thusday}}</label>
+    </td>
+</tr>
+<tr>
+    <td>
+         <label *ngIf="about"> Środa</label>
+    </td>
+    <td>
+        <label *ngIf="about">{{about.hours.wednesday}}</label>
+    </td>
+</tr>
+<tr>
+    <td>
+         <label *ngIf="about"> Czwartek</label>
+    </td>
+    <td>
+        <label *ngIf="about">{{about.hours.thursday}}</label>
+    </td>
+</tr>
+<tr>
+    <td>
+         <label *ngIf="about"> Piątek</label>
+    </td>
+    <td>
+        <label *ngIf="about">{{about.hours.friday}}</label>
+    </td>
+</tr>
+<tr>
+    <td>
+         <label *ngIf="about"> Sobota</label>
+    </td>
+    <td>
+        <label *ngIf="about">{{about.hours.saturday}}</label>
+    </td>
+</tr>
+<tr>
+    <td>
+         <label *ngIf="about"> Niedziela</label>
+    </td>
+    <td>
+        <label *ngIf="about">{{about.hours.sunday}}</label>
+    </td>
+</tr>
+</table>

@@ -29,7 +29,7 @@ export class OrderFormComponent{
 
     submit(){
         this.user = new User(this.firstName, this.lastName, this.number, this.movieIds);
-        this.orderFormService.submitData(this.user, this.movieIds);
+        this.orderFormService.submitData(this.user);
     }
 
     ngOnInit(){

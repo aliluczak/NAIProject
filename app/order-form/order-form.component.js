@@ -24,7 +24,7 @@ var OrderFormComponent = (function () {
     }
     OrderFormComponent.prototype.submit = function () {
         this.user = new order_form_user_1.User(this.firstName, this.lastName, this.number, this.movieIds);
-        this.orderFormService.submitData(this.user, this.movieIds);
+        this.orderFormService.submitData(this.user);
     };
     OrderFormComponent.prototype.ngOnInit = function () {
         this.cart = this.dataProvider.cart;

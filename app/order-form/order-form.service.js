@@ -15,10 +15,10 @@ var OrderFormService = (function () {
     function OrderFormService(http) {
         this.http = http;
     }
-    OrderFormService.prototype.submitData = function (form, movieIds) {
+    OrderFormService.prototype.submitData = function (form) {
         var _this = this;
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        var body = JSON.stringify({ form: form });
+        var body = JSON.stringify(form);
         console.log(body);
         this.http.post('http://localhost:8081/api/borrow', body, headers)
             .map(function (res) { return res.json(); })

@@ -10,11 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class AboutComponent implements OnInit{
+    public about:About;
     constructor(private aboutService: AboutService){}
-    public about: About;
 
     ngOnInit (){
-              this.aboutService.getAbout().subscribe(
-              data => {this.about = data;});
+        this.aboutService.getAboutData().subscribe(result => this.about = result);
     }
 }
