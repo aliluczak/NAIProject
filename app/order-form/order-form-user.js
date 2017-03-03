@@ -4,7 +4,6 @@ var User = (function () {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = number;
-        this.cart = cart;
     }
     return User;
 }());

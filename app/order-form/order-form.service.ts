@@ -10,24 +10,19 @@ export class OrderFormService{
     }
 
 
-    submitData(user: User){
+    submitData(form: User, movieIds: Array<number>){
         let headers = new Headers({ 'Content-Type': 'application/json' });
-        let body = JSON.stringify(user);
-       return this.http.post('http://localhost:8081/borrow', body, headers)
+        let body = JSON.stringify({form});
+        console.log(body);
+         this.http.post('http://localhost:8081/api/borrow', body, headers)
             .map(res => res.json())
-            .catch(this.handleError);
+            .subscribe(
+      err => this.logError(err),
+      () => console.log('Authentication Complete')
+    );
     }
 
-    handleError(error: Response | any){
-        let errMsg: string;
-        if (error instanceof Response) {
-            const body = error.json() || '';
-            const err = body.error || JSON.stringify(body);
-            errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-        } else {
-            errMsg = error.message ? error.message : error.toString();
-        }
-        console.error(errMsg);
-        return Observable.throw(errMsg);
-    }
+    logError(err: String) {
+  console.error('There was an error: ' + err);
+}
 }

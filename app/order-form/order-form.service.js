@@ -10,31 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
-var Rx_1 = require('rxjs/Rx');
 require('rxjs/add/operator/map');
 var OrderFormService = (function () {
     function OrderFormService(http) {
         this.http = http;
     }
-    OrderFormService.prototype.submitData = function (user) {
+    OrderFormService.prototype.submitData = function (form, movieIds) {
+        var _this = this;
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        var body = JSON.stringify(user);
-        return this.http.post('http://localhost:8081/borrow', body, headers)
+        var body = JSON.stringify({ form: form });
+        console.log(body);
+        this.http.post('http://localhost:8081/api/borrow', body, headers)
             .map(function (res) { return res.json(); })
-            .catch(this.handleError);
+            .subscribe(function (err) { return _this.logError(err); }, function () { return console.log('Authentication Complete'); });
     };
-    OrderFormService.prototype.handleError = function (error) {
-        var errMsg;
-        if (error instanceof http_1.Response) {
-            var body = error.json() || '';
-            var err = body.error || JSON.stringify(body);
-            errMsg = error.status + " - " + (error.statusText || '') + " " + err;
-        }
-        else {
-            errMsg = error.message ? error.message : error.toString();
-        }
-        console.error(errMsg);
-        return Rx_1.Observable.throw(errMsg);
+    OrderFormService.prototype.logError = function (err) {
+        console.error('There was an error: ' + err);
     };
     OrderFormService = __decorate([
         core_1.Injectable(), 

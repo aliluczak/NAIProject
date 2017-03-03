@@ -14,8 +14,7 @@ var http_1 = require('@angular/http');
 var app_component_1 = require('./app.component');
 var router_1 = require('@angular/router');
 var routes = [
-    { path: 'list', loadChildren: 'app/movie-list/movie.module#MovieModule' },
-    { path: '', redirectTo: '/list', pathMatch: 'full' }
+    { path: '', loadChildren: 'app/movie-list/movie.module#MovieModule' }
 ];
 var AppModule = (function () {
     function AppModule() {

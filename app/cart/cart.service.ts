@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/observable';
 import 'rxjs/add/operator/map';
 import { Observer } from 'rxjs/observer';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {Router} from '@angular/router';
 
 
 @Injectable()
@@ -13,7 +14,7 @@ export class CartService {
 
     _movies: BehaviorSubject<Movie[]>;
    
-    constructor() {
+    constructor(private router: Router) {
         this._movies = <BehaviorSubject<Movie[]>>new BehaviorSubject(this.cart);
     }
 
@@ -36,6 +37,7 @@ export class CartService {
         if (movie.copiesLeft > 0){
             this.cart.push(movie);
             movie.copiesLeft--;
+            console.log(this.cart.length);
            this._movies.next(this.cart);
         }
     }
@@ -52,7 +54,9 @@ export class CartService {
     }
 
     getCart(): Array<Movie>{
+        console.log(this.cart.length);
         return this.cart;
     }
+
     
 }

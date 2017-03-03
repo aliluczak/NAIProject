@@ -10,10 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var cart_service_1 = require('./cart.service');
+var router_1 = require('@angular/router');
+var cart_dataprovider_1 = require('./cart.dataprovider');
 var CartComponent = (function () {
-    function CartComponent(cartService) {
+    function CartComponent(cartService, router, dataProvider) {
         var _this = this;
         this.cartService = cartService;
+        this.router = router;
+        this.dataProvider = dataProvider;
         this.borrowedMovies = [];
         cartService.tomovies.subscribe(function (movies) {
             _this.borrowedMovies = movies;
@@ -28,8 +32,15 @@ var CartComponent = (function () {
     });
     CartComponent.prototype.ngOnInit = function () {
     };
+    CartComponent.prototype.ngOnDestroy = function () {
+        this.dataProvider.cart = this.cartService.getCart();
+        console.log(this.dataProvider.cart.length);
+    };
     CartComponent.prototype.removeMovieFromCart = function (movie) {
         this.cartService.removeMovie(movie);
+    };
+    CartComponent.prototype.order = function () {
+        this.router.navigate(['/order']);
     };
     CartComponent = __decorate([
         core_1.Component({
@@ -37,7 +48,7 @@ var CartComponent = (function () {
             templateUrl: 'app/cart/cart.component.html',
             styleUrls: ['app/cart/cart.component.css'],
         }), 
-        __metadata('design:paramtypes', [cart_service_1.CartService])
+        __metadata('design:paramtypes', [cart_service_1.CartService, router_1.Router, cart_dataprovider_1.CartDataProvider])
     ], CartComponent);
     return CartComponent;
 }());

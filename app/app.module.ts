@@ -12,14 +12,11 @@ import {Http, Response, RequestOptions, Headers, Request, RequestMethod} from '@
 import { RouterModule, Routes } from '@angular/router';
 
 import { CartService } from './cart/cart.service';
-
-import {OrderFormService} from './order-form/order-form.service';
 import {AboutService} from './about/about.service';
 
 
 const routes: Routes = [
-    { path: 'list', loadChildren: 'app/movie-list/movie.module#MovieModule' },
-    { path: '', redirectTo: '/list', pathMatch: 'full'}
+    { path: '', loadChildren: 'app/movie-list/movie.module#MovieModule' }
 ];
 
 @NgModule({

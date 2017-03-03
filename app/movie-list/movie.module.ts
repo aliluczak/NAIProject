@@ -8,18 +8,21 @@ import { MovieComponent } from './movie.component';
 import { MovieService } from './movieList.service';
 
 import { CartComponent } from '../cart/cart.component'
+import { CartService } from '../cart/cart.service';
 import {OrderFormComponent} from '../order-form/order-form.component';
 import {OrderFormService} from '../order-form/order-form.service';
 import {AboutService} from '../about/about.service';
 import {AboutComponent} from '../about/about.component';
 
 import { RouterModule, Routes } from '@angular/router';
+import {CartDataProvider} from '../cart/cart.dataprovider';
 
 const routes: Routes = [
-    {path: ':category', component: MovieListComponent},
+    {path: 'list/:category', component: MovieListComponent},
     {path: 'order', component: OrderFormComponent}, //zmienić na komponent zamówienia
-     { path: '', component: MovieListComponent },
-     { path: 'about', component: AboutComponent }
+     { path: '', redirectTo: '/list', pathMatch:'full' },
+     {path: 'list', component: MovieListComponent},
+     {path: 'about', component: AboutComponent}
 ];
 
 @NgModule({
@@ -31,7 +34,7 @@ const routes: Routes = [
     ],
     declarations: [ MovieListComponent, MovieComponent, CartComponent, OrderFormComponent, AboutComponent ],
     exports: [ MovieListComponent, CartComponent, OrderFormComponent, AboutComponent ],
-    providers: [ MovieService, OrderFormService, AboutService ]
+    providers: [ MovieService, OrderFormService, AboutService, CartService, CartDataProvider ]
 })
 export class MovieModule {
 

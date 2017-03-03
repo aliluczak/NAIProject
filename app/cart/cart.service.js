@@ -11,8 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 require('rxjs/add/operator/map');
 var BehaviorSubject_1 = require('rxjs/BehaviorSubject');
+var router_1 = require('@angular/router');
 var CartService = (function () {
-    function CartService() {
+    function CartService(router) {
+        this.router = router;
         this.cart = [];
         this._movies = new BehaviorSubject_1.BehaviorSubject(this.cart);
     }
@@ -35,6 +37,7 @@ var CartService = (function () {
         if (movie.copiesLeft > 0) {
             this.cart.push(movie);
             movie.copiesLeft--;
+            console.log(this.cart.length);
             this._movies.next(this.cart);
         }
     };
@@ -47,11 +50,12 @@ var CartService = (function () {
         }
     };
     CartService.prototype.getCart = function () {
+        console.log(this.cart.length);
         return this.cart;
     };
     CartService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.Router])
     ], CartService);
     return CartService;
 }());

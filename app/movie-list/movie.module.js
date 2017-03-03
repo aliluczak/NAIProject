@@ -16,15 +16,18 @@ var movie_list_component_1 = require('./movie-list.component');
 var movie_component_1 = require('./movie.component');
 var movieList_service_1 = require('./movieList.service');
 var cart_component_1 = require('../cart/cart.component');
+var cart_service_1 = require('../cart/cart.service');
 var order_form_component_1 = require('../order-form/order-form.component');
 var order_form_service_1 = require('../order-form/order-form.service');
 var about_service_1 = require('../about/about.service');
 var about_component_1 = require('../about/about.component');
 var router_1 = require('@angular/router');
+var cart_dataprovider_1 = require('../cart/cart.dataprovider');
 var routes = [
-    { path: ':category', component: movie_list_component_1.MovieListComponent },
+    { path: 'list/:category', component: movie_list_component_1.MovieListComponent },
     { path: 'order', component: order_form_component_1.OrderFormComponent },
-    { path: '', component: movie_list_component_1.MovieListComponent },
+    { path: '', redirectTo: '/list', pathMatch: 'full' },
+    { path: 'list', component: movie_list_component_1.MovieListComponent },
     { path: 'about', component: about_component_1.AboutComponent }
 ];
 var MovieModule = (function () {
@@ -40,7 +43,7 @@ var MovieModule = (function () {
             ],
             declarations: [movie_list_component_1.MovieListComponent, movie_component_1.MovieComponent, cart_component_1.CartComponent, order_form_component_1.OrderFormComponent, about_component_1.AboutComponent],
             exports: [movie_list_component_1.MovieListComponent, cart_component_1.CartComponent, order_form_component_1.OrderFormComponent, about_component_1.AboutComponent],
-            providers: [movieList_service_1.MovieService, order_form_service_1.OrderFormService, about_service_1.AboutService]
+            providers: [movieList_service_1.MovieService, order_form_service_1.OrderFormService, about_service_1.AboutService, cart_service_1.CartService, cart_dataprovider_1.CartDataProvider]
         }), 
         __metadata('design:paramtypes', [])
     ], MovieModule);
